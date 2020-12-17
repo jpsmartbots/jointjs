@@ -1,5 +1,5 @@
 # JointJS Training
-Hi hello whatsup how are you???
+Hi hello whatsup how are you?
 ## About
 This repository has the work done by all the participants part of JointJS training sessions.
 
