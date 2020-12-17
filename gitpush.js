@@ -30,7 +30,7 @@ simpleGitPromise.addRemote('main',gitHubUrl);
         console.log('failed commmit');
  });
 // Finally push to online repository
- simpleGitPromise.push('origin','master')
+ simpleGitPromise.push('origin','main')
     .then((success) => {
        console.log('repo successfully pushed');
     },(failed)=> {
