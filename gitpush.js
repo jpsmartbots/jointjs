@@ -26,15 +26,15 @@ simpleGitPromise.add('.')
  simpleGitPromise.commit('Intial commit by simplegit')
    .then(
       (successCommit) => {
-        console.log('Successful commit'+ successCommit);
+        console.log('Successful commit'+ JSON.stringify(successCommit));
      }, (failed) => {
         console.log('failed commmit'+ JSON.stringify(failed));
  });
 
  // Finally push to online repository
   simpleGitPromise.push('origin','master')
-     .then((successPush) => {
-        console.log('repo successfully pushed'+ success);
+     .then((success) => {
+        console.log('repo successfully pushed'+ JSON.stringify(success));
      },(failed)=> {
         console.log('repo push failed');
   });
