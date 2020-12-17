@@ -8,11 +8,12 @@ const password = 'Smartbots1!';
 // Set up GitHub url like this so no manual entry of user pass needed
 const gitHubUrl = `https://${userName}:${password}@github.com/${userName}/${repo}`;
 // add local git config like username and email
-// simpleGit.addConfig('user.email','balvinder294@gmail.com');
-// simpleGit.addConfig('user.name','Balvinder Singh');
+const simpleGit = require('simple-git')();
+simpleGit.addConfig('user.email','jp@smartbots.ai');
+simpleGit.addConfig('user.name','Jaya Prakash');
 // Add remore repo url as origin to repo
 const simpleGitPromise = require('simple-git/promise')();
-simpleGitPromise.addRemote('main',gitHubUrl);
+simpleGitPromise.addRemote('origin',gitHubUrl);
 // Add all files for commit
   simpleGitPromise.add('.')
     .then(
