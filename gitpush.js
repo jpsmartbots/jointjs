@@ -13,7 +13,7 @@ simpleGit.addConfig('user.email','jp@smartbots.ai');
 simpleGit.addConfig('user.name','Jaya Prakash');
 // Add remore repo url as origin to repo
 const simpleGitPromise = require('simple-git/promise')();
-simpleGitPromise.addRemote('origin',gitHubUrl);
+// simpleGitPromise.addRemote('origin',gitHubUrl);
 // Add all files for commit
   simpleGitPromise.add('.')
     .then(
@@ -28,7 +28,7 @@ simpleGitPromise.addRemote('origin',gitHubUrl);
       (successCommit) => {
         console.log(successCommit);
      }, (failed) => {
-        console.log('failed commmit');
+        console.log('failed commmit'+ JSON.stringify(failed));
  });
 // Finally push to online repository
  simpleGitPromise.push('origin','main')
