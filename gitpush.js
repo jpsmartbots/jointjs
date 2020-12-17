@@ -15,10 +15,10 @@ simpleGit.addConfig('user.name','Jaya Prakash');
 const simpleGitPromise = require('simple-git/promise')();
 // simpleGitPromise.addRemote('origin',gitHubUrl);
 // Add all files for commit
-  simpleGitPromise.add('.')
+simpleGitPromise.add('.')
     .then(
        (addSuccess) => {
-          console.log(addSuccess);
+          console.log('Added successfully '+addSuccess);
        }, (failedAdd) => {
           console.log('adding files failed');
     });
@@ -26,14 +26,15 @@ const simpleGitPromise = require('simple-git/promise')();
  simpleGitPromise.commit('Intial commit by simplegit')
    .then(
       (successCommit) => {
-        console.log(successCommit);
+        console.log('Successful commit'+ successCommit);
      }, (failed) => {
         console.log('failed commmit'+ JSON.stringify(failed));
  });
-// Finally push to online repository
- simpleGitPromise.push('origin','main')
-    .then((success) => {
-       console.log('repo successfully pushed');
-    },(failed)=> {
-       console.log('repo push failed');
- });
+
+ // Finally push to online repository
+  simpleGitPromise.push('origin','master')
+     .then((successPush) => {
+        console.log('repo successfully pushed'+ success);
+     },(failed)=> {
+        console.log('repo push failed');
+  });
