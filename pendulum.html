@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css" />
+</head>
+<body>
+    <!-- content -->
+    <div id="myholder"></div>
+
+    <!-- dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+
+    <!-- code -->
+    <script type="text/javascript">
+
+        var graph = new joint.dia.Graph;
+
+        var paper = new joint.dia.Paper({
+            el: document.getElementById('myholder'),
+            model: graph,
+            width: 600,
+            height: 800,
+            gridSize: 1
+        });
+
+        // var rect = new joint.shapes.standard.Rectangle();
+        // rect.position(100, 30);
+        // rect.resize(100, 40);
+        // rect.attr({
+        //     body: {
+        //         fill: 'blue'
+        //     },
+        //     label: {
+        //         text: 'Hello',
+        //         fill: 'white'
+        //     }
+        // });
+        // rect.addTo(graph);
+
+        var peg = new joint.shapes.standard.Circle();
+        peg.resize(10, 10);
+        peg.position(300, 10);
+        peg.attr('root/title', 'joint.shapes.standard.Circle');
+        peg.attr('label/text', '');
+        peg.attr('body/fill', 'lightblue');
+        peg.addTo(graph);
+
+        var ball = new joint.shapes.standard.Circle();
+        ball.resize(100, 100);
+        ball.position(250, 10);
+        ball.attr('root/title', 'joint.shapes.standard.Circle');
+        ball.attr('label/text', '');
+        ball.attr('body/fill', 'lightblue');
+        ball.addTo(graph);
+
+        for(var i=0; i<10000; i++) {
+          setTimeout(function (count) {
+            ball.position(250 - 200*Math.cos(count/100), 300 - 20*Math.cos(2*count/100));
+          }, i*5, i)
+        }
+
+        var link = new joint.shapes.standard.Link();
+        link.source(peg);
+        link.target(ball);
+        link.addTo(graph);
+
+        // var rect2 = rect.clone();
+        // rect2.translate(300, 0);
+        // rect2.attr('label/text', 'World!');
+        // rect2.addTo(graph);
+        //
+        // var link = new joint.shapes.standard.Link();
+        // link.source(rect);
+        // link.target(rect2);
+        // link.addTo(graph);
+
+    </script>
+</body>
+</html>
