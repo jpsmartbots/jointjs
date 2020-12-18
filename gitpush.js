@@ -12,29 +12,36 @@ const simpleGit = require('simple-git')();
 simpleGit.addConfig('user.email','jp@smartbots.ai');
 simpleGit.addConfig('user.name','Jaya Prakash');
 // Add remore repo url as origin to repo
-const simpleGitPromise = require('simple-git/promise')();
-// simpleGitPromise.addRemote('origin',gitHubUrl);
+const simpleGitPromise = require('simple-git')();
+
+let sg = require('simple-git')();
+
+// sg.add('README.md').commit("first commit!");
+// sg.addRemote('origin', gitHubUrl);
+// sg.push(['-u', 'origin', 'master'], () => console.log('done'));
+
+simpleGitPromise.addRemote('origin',gitHubUrl);
 // Add all files for commit
-simpleGitPromise.add('.')
+simpleGitPromise.add('README.md')
     .then(
        (addSuccess) => {
           console.log('Added successfully '+addSuccess);
+          // Commit files as Initial Commit
+          simpleGitPromise.commit('Intial commit by simplegit')
+             .then(
+                (successCommit) => {
+                  console.log('Successful commit '+ JSON.stringify(successCommit));
+                  // simpleGitPromise.push(['-u', 'origin', 'master'], () => console.log('done'));
+                  // Finally push to online repository
+                   simpleGitPromise.push('origin','master')
+                      .then((success) => {
+                         console.log('repo successfully pushed '+ JSON.stringify(success));
+                      },(failed)=> {
+                         console.log('repo push failed');
+                   });
+               }, (failed) => {
+                  console.log('failed commmit '+ JSON.stringify(failed));
+           });
        }, (failedAdd) => {
           console.log('adding files failed');
     });
-// Commit files as Initial Commit
- simpleGitPromise.commit('Intial commit by simplegit')
-   .then(
-      (successCommit) => {
-        console.log('Successful commit'+ JSON.stringify(successCommit));
-     }, (failed) => {
-        console.log('failed commmit'+ JSON.stringify(failed));
- });
-
- // Finally push to online repository
-  simpleGitPromise.push('origin','master')
-     .then((success) => {
-        console.log('repo successfully pushed'+ JSON.stringify(success));
-     },(failed)=> {
-        console.log('repo push failed');
-  });
