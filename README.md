@@ -1,5 +1,5 @@
 # JointJS Training
-Hi hello. How are you today & tomorrow  ??
+Hi hello. How are you today & tomorrow and ???
 ## About
 This repository has the work done by all the participants part of JointJS training sessions.
 
